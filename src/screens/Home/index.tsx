@@ -7,17 +7,16 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { styles } from "./styles";
 import { Background } from "../../components/Background";
 import { useNavigation } from "@react-navigation/native";
+import axios from "axios";
 
 export function Home() {
   const { navigate } = useNavigation();
   const [games, setGames] = useState<GameCardProps[]>([]);
 
   useEffect(() => {
-    fetch("http://10.0.0.62:3000/games")
-      .then((response) => response.json())
-      .then((data) => {
-        setGames(data);
-      });
+    axios(`${process.env.API_KEY}/games`).then((response) => {
+      setGames(response.data);
+    });
   }, []);
 
   function handleOpenGame({ id, title, bannerUrl }: GameCardProps) {

@@ -27,13 +27,13 @@ export function Game() {
   }
 
   async function handlerGetConnectDiscord(adsId: string) {
-    axios(`http://10.0.0.62:3000/ads/${adsId}/discord`).then((response) => {
+    axios(`${process.env.API_KEY}/ads/${adsId}/discord`).then((response) => {
       setDiscordDuoSelected(response.data.discord);
     });
   }
 
   useEffect(() => {
-    axios(`http://10.0.0.62:3000/games/${game.id}/ads`).then((response) => {
+    axios(`${process.env.API_KEY}/games/${game.id}/ads`).then((response) => {
       setDuo(response.data);
     });
   }, []);
