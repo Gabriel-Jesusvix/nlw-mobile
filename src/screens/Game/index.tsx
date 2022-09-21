@@ -81,6 +81,7 @@ export function Game() {
           )}
         />
         <DuoMatch
+          animationType="fade"
           visible={discordDuoSelected.length > 0}
           discord="GabrielJ#9876"
           onClose={() => setDiscordDuoSelected("")}
